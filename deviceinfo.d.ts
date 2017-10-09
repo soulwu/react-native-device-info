@@ -2,6 +2,7 @@
 // import * as DeviceInfo from 'react-native-device-info';
 
 export function getUniqueID(): string;
+export function getIDFA(): string;
 export function getManufacturer(): string;
 export function getBrand(): string;
 export function getModel(): string;

@@ -9,6 +9,7 @@
 #import "RNDeviceInfo.h"
 #import "DeviceUID.h"
 #import <LocalAuthentication/LocalAuthentication.h>
+@import AdSupport;
 
 @interface RNDeviceInfo()
 @property (nonatomic) bool isEmulator;
@@ -212,6 +213,7 @@ RCT_EXPORT_MODULE()
              @"isTablet": @(self.isTablet),
              @"fingerprint": @"Apple",
              @"display": @"Apple",
+             @"idfa": [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString],
              };
 }
 

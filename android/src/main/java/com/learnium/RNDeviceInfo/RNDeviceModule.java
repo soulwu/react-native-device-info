@@ -16,6 +16,7 @@ import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
 
 import com.google.android.gms.iid.InstanceID;
+import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -165,6 +166,16 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
     }
     constants.put("fingerprint", Build.FINGERPRINT);
     constants.put("display", Build.DISPLAY);
+
+    String adId = "";
+    try {
+      AdvertisingIdClient.Info adInfo = AdvertisingIdClient.getAdvertisingIdInfo(this.getReactApplicationContext());
+      adId = adInfo != null ? adInfo.getId() : "";
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    constants.put("idfa", adId);
+
     return constants;
   }
 }
