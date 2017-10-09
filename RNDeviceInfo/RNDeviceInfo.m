@@ -194,6 +194,8 @@ RCT_EXPORT_MODULE()
              @"timezone": self.timezone,
              @"isEmulator": @(self.isEmulator),
              @"isTablet": @(self.isTablet),
+             @"fingerprint": @"Apple",
+             @"display": @"Apple",
              };
 }
 

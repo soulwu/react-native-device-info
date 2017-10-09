@@ -23,6 +23,12 @@ module.exports = {
   getBrand: function () {
     return RNDeviceInfo.brand;
   },
+  getFingerprint: function () {
+    return RNDeviceInfo.fingerprint;
+  },
+  getDisplay: function () {
+    return RNDeviceInfo.display;
+  },
   getSystemName: function () {
     return RNDeviceInfo.systemName;
   },
@@ -62,8 +68,8 @@ module.exports = {
   isTablet: function() {
     return RNDeviceInfo.isTablet;
   },
-  isPinOrFingerprintSet: function () {
-    return RNDeviceInfo.isPinOrFingerprintSet;
+  isPinOrFingerprintSet: function (cb) {
+    return RNDeviceInfo.isPinOrFingerprintSet(cb);
   },
   getFirstInstallTime: function () {
     return RNDeviceInfo.firstInstallTime;

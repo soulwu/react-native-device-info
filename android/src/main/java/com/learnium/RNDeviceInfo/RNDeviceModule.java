@@ -138,6 +138,8 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
         TelephonyManager telMgr = (TelephonyManager) this.reactContext.getSystemService(Context.TELEPHONY_SERVICE);
         constants.put("phoneNumber", telMgr.getLine1Number());
     }
+    constants.put("fingerprint", Build.FINGERPRINT);
+    constants.put("display", Build.DISPLAY);
     return constants;
   }
 }

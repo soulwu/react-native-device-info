@@ -5,6 +5,8 @@ export function getUniqueID(): string;
 export function getManufacturer(): string;
 export function getBrand(): string;
 export function getModel(): string;
+export function getFingerprint(): string;
+export function getDisplay(): string;
 export function getDeviceId(): string;
 export function getSystemName(): string;
 export function getSystemVersion(): string;
