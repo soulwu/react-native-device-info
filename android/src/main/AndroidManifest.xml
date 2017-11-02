@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.learnium.RNDeviceInfo">
-          
+    <uses-permission android:name="android.permission.BLUETOOTH"/>          <!-- for Device Name -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>   <!-- for Phone Number -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
 </manifest>
