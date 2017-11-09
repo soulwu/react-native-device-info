@@ -94,5 +94,8 @@ module.exports = {
   },
   getPhoneNumber: function () {
     return RNDeviceInfo.phoneNumber;
+  },
+  getChannel: function() {
+    return RNDeviceInfo.channel;
   }
 };

@@ -198,6 +198,7 @@ RCT_EXPORT_MODULE()
              @"apiLevel": @"not available",
              @"model": self.deviceName,
              @"brand": @"Apple",
+             @"channel": @"",
              @"deviceId": self.deviceId,
              @"deviceName": currentDevice.name,
              @"deviceLocale": self.deviceLocale,

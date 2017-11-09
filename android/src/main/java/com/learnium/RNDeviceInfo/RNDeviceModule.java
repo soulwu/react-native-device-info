@@ -14,6 +14,9 @@ import android.provider.Settings.Secure;
 import android.webkit.WebSettings;
 import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import java.io.Serializable;
 
 import com.google.android.gms.iid.InstanceID;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
@@ -88,6 +91,24 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
     return layout == Configuration.SCREENLAYOUT_SIZE_LARGE || layout == Configuration.SCREENLAYOUT_SIZE_XLARGE;
   }
 
+  private String getChannel() {
+    try {
+      PackageManager packageManager = this.reactContext.getPackageManager();
+      if (packageManager != null) {
+        ApplicationInfo applicationInfo = packageManager.getApplicationInfo(this.reactContext.getPackageName(), PackageManager.GET_META_DATA);
+        if (applicationInfo != null && applicationInfo.metaData != null) {
+          Serializable channel = applicationInfo.metaData.getSerializable("CHANNEL");
+          if (channel != null) {
+            return channel.toString();
+          }
+        }
+      }
+    } catch (PackageManager.NameNotFoundException e) {
+      e.printStackTrace();
+    }
+    return "";
+  }
+
   @ReactMethod
   public void isPinOrFingerprintSet(Callback callback) {
     KeyguardManager keyguardManager = (KeyguardManager) this.reactContext.getSystemService(Context.KEYGUARD_SERVICE); //api 16+
@@ -126,6 +147,8 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
     } catch (PackageManager.NameNotFoundException e) {
       e.printStackTrace();
     }
+
+    constants.put("channel", this.getChannel());
 
     String deviceName = "Unknown";
 
