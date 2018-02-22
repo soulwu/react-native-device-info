@@ -13,14 +13,20 @@
 
 @interface RNDeviceInfo()
 @property (nonatomic) bool isEmulator;
+@property (nonatomic) NSString* channel;
 @end
 
 @implementation RNDeviceInfo
 {
-
 }
 
 @synthesize isEmulator;
+@synthesize channel;
+
+- (void)setChannel:(NSString *)channel
+{
+    self.channel = channel;
+}
 
 RCT_EXPORT_MODULE()
 
@@ -151,15 +157,6 @@ RCT_EXPORT_MODULE()
     }
 
     return deviceName;
-}
-
-- (NSString*) channel
-{
-#ifdef PRD
-    return @"";
-#else
-    return @"uat";
-#endif
 }
 
 - (NSString*) userAgent
