@@ -153,6 +153,15 @@ RCT_EXPORT_MODULE()
     return deviceName;
 }
 
+- (NSString*) channel
+{
+#ifdef PRD
+    return @"";
+#else
+    return @"uat";
+#endif
+}
+
 - (NSString*) userAgent
 {
 #if TARGET_OS_TV
@@ -198,7 +207,7 @@ RCT_EXPORT_MODULE()
              @"apiLevel": @"not available",
              @"model": self.deviceName,
              @"brand": @"Apple",
-             @"channel": @"",
+             @"channel": self.channel,
              @"deviceId": self.deviceId,
              @"deviceName": currentDevice.name,
              @"deviceLocale": self.deviceLocale,
