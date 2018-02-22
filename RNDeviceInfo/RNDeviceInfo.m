@@ -13,7 +13,6 @@
 
 @interface RNDeviceInfo()
 @property (nonatomic) bool isEmulator;
-@property (nonatomic) NSString* channel;
 @end
 
 @implementation RNDeviceInfo
@@ -21,11 +20,16 @@
 }
 
 @synthesize isEmulator;
-@synthesize channel;
 
-- (void)setChannel:(NSString *)channel
+static NSString* _channel = @"";
++ (void)setChannel:(NSString*)channel
 {
-    self.channel = channel;
+    _channel = channel;
+}
+
++ (NSString*) getChannel
+{
+  return _channel;
 }
 
 RCT_EXPORT_MODULE()
@@ -204,7 +208,7 @@ RCT_EXPORT_MODULE()
              @"apiLevel": @"not available",
              @"model": self.deviceName,
              @"brand": @"Apple",
-             @"channel": self.channel,
+             @"channel": [RNDeviceInfo getChannel],
              @"deviceId": self.deviceId,
              @"deviceName": currentDevice.name,
              @"deviceLocale": self.deviceLocale,

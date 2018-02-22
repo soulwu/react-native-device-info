@@ -17,6 +17,6 @@
 
 @interface RNDeviceInfo : NSObject <RCTBridgeModule>
 
-- (void)setChannel:(NSString *)channel;
++ (void)setChannel:(NSString *)channel;
 
 @end
